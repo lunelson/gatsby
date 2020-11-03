@@ -1,5 +1,3 @@
-// const _ = require(`lodash`)
-//
 function unstable_shouldOnCreateNode({ node }) {
   return (
     node.internal.mediaType === `text/markdown-inline` ||
@@ -28,17 +26,6 @@ module.exports.onCreateNode = async function onCreateNode(
   const content = await loadNodeContent(node)
 
   try {
-    // const data = grayMatter(content, pluginOptions)
-
-    // if (data.data) {
-    //   data.data = _.mapValues(data.data, value => {
-    //     if (_.isDate(value)) {
-    //       return value.toJSON()
-    //     }
-    //     return value
-    //   })
-    // }
-
     const markdownNode = {
       id: createNodeId(`${node.id} >>> MarkdownRemark`),
       children: [],
@@ -49,12 +36,6 @@ module.exports.onCreateNode = async function onCreateNode(
       },
     }
 
-    // markdownNode.frontmatter = {
-    //   title: ``, // always include a title
-    //   ...data,
-    // }
-
-    // markdownNode.excerpt = excerpt
     markdownNode.rawMarkdownBody = content
 
     // Add path to the markdown file path
